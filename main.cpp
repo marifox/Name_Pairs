@@ -13,7 +13,8 @@ public:
 
     int number_of_pairs = 0;
     //Name_pairs();//конструктор по умолчанию
-
+    //outluting names
+    void print();
     //inputing names
     void read_names()
     {
@@ -50,18 +51,6 @@ public:
 
     }
 
-    //output of names
-    void print()
-    {
-        int sizeName = name.size();
-        for(int i = 0; i < sizeName; i++)
-        {
-                cout << name[i] << " "<< age[i] << endl;
-
-            }
-        cout.clear();
-
-    }
     //insertion sort
     void sort_names()
     {
@@ -84,7 +73,13 @@ public:
         }
     }
 
-    friend bool operator==(Name_pairs NameAge1, Name_pairs NameAge2)
+    /*operator<<()
+    {
+
+    }*/
+
+};
+bool operator==(Name_pairs NameAge1, Name_pairs NameAge2)
     {
         //prototype of overloading of ==
         int z = 0;
@@ -100,7 +95,8 @@ public:
         }
         else return false;
     }
-     friend bool operator!=(Name_pairs NameAge1, Name_pairs NameAge2)
+
+bool operator!=(Name_pairs NameAge1, Name_pairs NameAge2)
     {
         //prototype of overloading of ==
         int z = 0;
@@ -116,9 +112,28 @@ public:
         }
         else return true;
     }
-};
+/*void Name_pairs:: print()
+    {
+        int sizeName = name.size();
+        for(int i = 0; i < sizeName; i++)
+        {
+                cout << name[i] << " "<< age[i] << endl;
 
+            }
+        cout.clear();
 
+    }*/
+ostream& operator<<(ostream& os, Name_pairs& pair1)
+{
+    int sizeName = pair1.name.size();
+        for(int i = 0; i < sizeName; i++)
+        {
+            os << pair1.name[i] << " "<< pair1.age[i] << endl;
+
+            }
+
+    return os;
+}
 int main()
 {
     Name_pairs Kuel;
@@ -127,8 +142,9 @@ int main()
     Kuel.read_ages();
     Hi.read_names();
     Hi.read_ages();
-    Kuel.sort_names();
-    if(Kuel != Hi) cout << "I am working "<<'\n';
-    else cout << "Fuck"<<endl;
+    //Kuel.sort_names();
+    //if(Hi == Kuel)
+    cout << Hi;
+    cout << Kuel;
 	return 0;
 }
